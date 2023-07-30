@@ -41,7 +41,7 @@ export default function Sidebar() {
   } else {
     const [role, setRole] = useState("User");
     useEffect(() => {
-      fetch("https://vidhyapith-full-stack-app.vercel.app/role", {
+      fetch("https://vidhyapith-full-stack-app.vercel.app/admin/role", {
         method: "GET",
         headers: {
           "Content-type": "application/json",

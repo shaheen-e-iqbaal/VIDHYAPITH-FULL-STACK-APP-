@@ -50,7 +50,7 @@ function Appbar(){
     }
     else{
         useEffect(()=>{
-        fetch("https://vidhyapith-full-stack-app.vercel.app/admin/me", {
+        fetch("https://vidhyapith-full-stack-app.vercel.app/users/me", {
           method: "GET",
           headers: {
             "Content-type": "application/json",

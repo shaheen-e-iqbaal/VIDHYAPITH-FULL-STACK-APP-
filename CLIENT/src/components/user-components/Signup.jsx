@@ -131,7 +131,7 @@ function Signup() {
                 res.json().then((data) => {
                   if (data.message === "user created succesfully") {
                     localStorage.setItem("token", data.token);
-                    window.location = "/home";
+                    window.location = "/";
                   } else {
                     setMassage(data.message);
                   }
