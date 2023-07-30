@@ -22,7 +22,6 @@ export default function Sidebar() {
   if (token === "" || token === null || token === 'undefined') {
     return (
       <div
-        className="sidebar"
         style={{
           position: "fixed",
           top: "61px",
