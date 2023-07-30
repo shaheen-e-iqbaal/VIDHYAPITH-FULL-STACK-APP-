@@ -19,7 +19,7 @@ import "./PopupStyles.css";
 
 export default function Sidebar() {
   const token = localStorage.getItem("token");
-  if (token === "") {
+  if (token === "" || token === null || token === 'undefined') {
     return (
       <div
         className="sidebar"
