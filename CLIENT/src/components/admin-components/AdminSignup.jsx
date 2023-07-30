@@ -127,11 +127,14 @@ function AdminSignup() {
                   "Content-type": "application/json",
                 },
               };
-              fetch("http://localhost:3000/admin/signup", obj).then((res) => {
+              fetch(
+                "https://vidhyapith-full-stack-app.vercel.app/admin/signup",
+                obj
+              ).then((res) => {
                 res.json().then((data) => {
                   if (data.message === "Admin created succesfully") {
-                    localStorage.setItem('token',data.token);
-                    window.location = '/admin';
+                    localStorage.setItem("token", data.token);
+                    window.location = "/admin";
                   } else {
                     setMassage(<Alert severity="error">{data.message}</Alert>);
                   }

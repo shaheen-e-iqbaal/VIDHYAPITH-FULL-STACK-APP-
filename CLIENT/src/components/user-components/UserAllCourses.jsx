@@ -15,25 +15,28 @@ export default function UserAllCourses () {
     const [courses,setCourses] = useState([]);
     const [purchasedcourses,setPurchasedcourses] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:3000/users/courses',{
-            method:"GET",
-            headers:{
-                "Content-type":'application/json',
-                'auth': 'bearer ' + localStorage.getItem('token')
-            }
-        }).then((res)=>{
-            res.json().then((data)=>{
-                //console.log(data);
-                setCourses(data);
-            })
-        })
-        fetch("http://localhost:3000/users/purchasedCourses", {
+        fetch("https://vidhyapith-full-stack-app.vercel.app/users/courses", {
           method: "GET",
           headers: {
             "Content-type": "application/json",
             auth: "bearer " + localStorage.getItem("token"),
           },
         }).then((res) => {
+          res.json().then((data) => {
+            //console.log(data);
+            setCourses(data);
+          });
+        });
+        fetch(
+          "https://vidhyapith-full-stack-app.vercel.app/users/purchasedCourses",
+          {
+            method: "GET",
+            headers: {
+              "Content-type": "application/json",
+              auth: "bearer " + localStorage.getItem("token"),
+            },
+          }
+        ).then((res) => {
           res.json().then((data) => {
             setPurchasedcourses(data);
           });

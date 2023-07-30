@@ -131,7 +131,8 @@ function AdminSignin() {
                 "Content-type": "application/json",
               },
             };
-            const route = "http://localhost:3000/" + role + "/login";
+            const route =
+              "https://vidhyapith-full-stack-app.vercel.app/" + role + "/login";
             console.log(role);
             fetch(route, obj).then((res) => {
               res.json().then((data) => {

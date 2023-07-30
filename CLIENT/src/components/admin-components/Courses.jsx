@@ -15,18 +15,18 @@ function Courses(){
     const [courses,setCourses] = useState([]);
     const token = localStorage.getItem('token');
         useEffect(()=>{
-        fetch('http://localhost:3000/admin/courses',{
-            method:"GET",
-            headers:{
-                "Content-type":'application/json',
-                'auth': 'bearer ' + localStorage.getItem('token')
-            }
-        }).then((res)=>{
-            res.json().then((data)=>{
-                console.log(data);
-                setCourses(data);
-            })
-        })
+        fetch("https://vidhyapith-full-stack-app.vercel.app/admin/courses", {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            auth: "bearer " + localStorage.getItem("token"),
+          },
+        }).then((res) => {
+          res.json().then((data) => {
+            console.log(data);
+            setCourses(data);
+          });
+        });
     },[])
     return (
       <>

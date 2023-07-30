@@ -47,7 +47,7 @@ function AdminAppbar() {
     );
   } else {
     useEffect(() => {
-      fetch("http://localhost:3000/admin/me", {
+      fetch("https://vidhyapith-full-stack-app.vercel.app/admin/me", {
         method: "GET",
         headers: {
           "Content-type": "application/json",

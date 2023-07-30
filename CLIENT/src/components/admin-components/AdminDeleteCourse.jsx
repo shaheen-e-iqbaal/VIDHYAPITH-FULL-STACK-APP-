@@ -6,13 +6,17 @@ export default function AdminDeleteCourse(props) {
   const courseId = props.courseId;
   console.log(courseId);
   useEffect(() => {
-    fetch("http://localhost:3000/admin/courses/delete/" + courseId, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-        auth: "bearer " + localStorage.getItem("token"),
-      },
-    }).then((res) => {
+    fetch(
+      "https://vidhyapith-full-stack-app.vercel.app/admin/courses/delete/" +
+        courseId,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          auth: "bearer " + localStorage.getItem("token"),
+        },
+      }
+    ).then((res) => {
       res.json().then((data) => {
         Navigate("/admin/courses");
       });

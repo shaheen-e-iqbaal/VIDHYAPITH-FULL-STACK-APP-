@@ -124,7 +124,10 @@ function Signup() {
                   "Content-type": "application/json",
                 },
               };
-              fetch("http://localhost:3000/users/signup", obj).then((res) => {
+              fetch(
+                "https://vidhyapith-full-stack-app.vercel.app/users/signup",
+                obj
+              ).then((res) => {
                 res.json().then((data) => {
                   if (data.message === "user created succesfully") {
                     localStorage.setItem("token", data.token);

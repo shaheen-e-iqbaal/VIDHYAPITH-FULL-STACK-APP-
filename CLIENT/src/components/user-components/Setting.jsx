@@ -28,7 +28,7 @@ export default function Setting() {
     event.preventDefault();
   };
   useEffect(() => {
-    fetch("http://localhost:3000/user/password", {
+    fetch("https://vidhyapith-full-stack-app.vercel.app/user/password", {
       method: "GET",
       headers: {
         "Content-type": "application/json",

@@ -133,19 +133,21 @@ function AddCourse(){
             }
         }
         console.log(obj.body.image);
-        fetch('http://localhost:3000/admin/courses',obj).then((res)=>{
-            res.json().then((data)=>{
-                if (
-                  data.message === "Course with this ID Exist" ||
-                  data.message ===
-                    "Course with this Title and Description Exist"
-                ) {
-                  setMassage(<Alert severity="error">{data.message}</Alert>);
-                } else {
-                  setMassage(<Alert severity="success">{data.message}</Alert>);
-                }
-            })
-        })
+        fetch(
+          "https://vidhyapith-full-stack-app.vercel.app/admin/courses",
+          obj
+        ).then((res) => {
+          res.json().then((data) => {
+            if (
+              data.message === "Course with this ID Exist" ||
+              data.message === "Course with this Title and Description Exist"
+            ) {
+              setMassage(<Alert severity="error">{data.message}</Alert>);
+            } else {
+              setMassage(<Alert severity="success">{data.message}</Alert>);
+            }
+          });
+        });
     }} >Add course</Button>
     {/* </div> */}
     </Card>

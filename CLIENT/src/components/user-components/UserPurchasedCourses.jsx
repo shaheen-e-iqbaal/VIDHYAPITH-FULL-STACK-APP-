@@ -12,13 +12,16 @@ import Appbar from "./Appbar";
 export default function UserPurchasedCourses() {
   const [purchasedcourses, setPurchasedcourses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/users/purchasedCourses", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        auth: "bearer " + localStorage.getItem("token"),
-      },
-    }).then((res) => {
+    fetch(
+      "https://vidhyapith-full-stack-app.vercel.app/users/purchasedCourses",
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          auth: "bearer " + localStorage.getItem("token"),
+        },
+      }
+    ).then((res) => {
       res.json().then((data) => {
         setPurchasedcourses(data);
       });

@@ -19,18 +19,17 @@ function Coursee () {
     const [courses,setCourses] = useState([]);
     
     useEffect(()=>{
-        fetch('http://localhost:3000/admin/courses',{
-            method:"GET",
-            headers:{
-                "Content-type":'application/json',
-                'auth': 'bearer ' + localStorage.getItem('token')
-            }
-        }).then((res)=>{
-            res.json().then((data)=>{
-                
-                setCourses(data);
-            })
-        })
+        fetch("https://vidhyapith-full-stack-app.vercel.app/admin/courses", {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            auth: "bearer " + localStorage.getItem("token"),
+          },
+        }).then((res) => {
+          res.json().then((data) => {
+            setCourses(data);
+          });
+        });
     },[])
     let course;
 
@@ -230,36 +229,37 @@ function Upadecourse(props){
             }
         }
         //console.log(obj.body.image);
-        fetch('http://localhost:3000/admin/courses/' + course.courseId,obj).then((res)=>{
-            res.json().then((data)=>{
-                setMassage(<Alert severity="error">
-                      {data.message}
-                    </Alert>);
-                //console.log(data.message);
-                if(data.message === 'course updated succesfully'){
-                let courses = props.courses;
-                let newcourse = obj.body;
-                newcourse = JSON.parse(newcourse);
-                let updatedcourses = [];
-                for(let i=0;i<courses.length;i++){
-                    if(course.courseId === courses[i].courseId){
-                        courses[i].title = newcourse.title;
-                        courses[i].description = newcourse.description;
-                        courses[i].price = newcourse.price;
-                        courses[i].published = newcourse.published;
-                        courses[i].imageLink = newcourse.imageLink;
-                        updatedcourses.push(courses[i]);
-                    }
-                    else{
-                        updatedcourses.push(courses[i]);
-                    }
+        fetch(
+          "https://vidhyapith-full-stack-app.vercel.app/admin/courses/" +
+            course.courseId,
+          obj
+        ).then((res) => {
+          res.json().then((data) => {
+            setMassage(<Alert severity="error">{data.message}</Alert>);
+            //console.log(data.message);
+            if (data.message === "course updated succesfully") {
+              let courses = props.courses;
+              let newcourse = obj.body;
+              newcourse = JSON.parse(newcourse);
+              let updatedcourses = [];
+              for (let i = 0; i < courses.length; i++) {
+                if (course.courseId === courses[i].courseId) {
+                  courses[i].title = newcourse.title;
+                  courses[i].description = newcourse.description;
+                  courses[i].price = newcourse.price;
+                  courses[i].published = newcourse.published;
+                  courses[i].imageLink = newcourse.imageLink;
+                  updatedcourses.push(courses[i]);
+                } else {
+                  updatedcourses.push(courses[i]);
                 }
-                props.setCourses(updatedcourses);
-                setMassage(<Alert severity="success">{data.message}</Alert>);
-                //props.setCourse(obj.body)
+              }
+              props.setCourses(updatedcourses);
+              setMassage(<Alert severity="success">{data.message}</Alert>);
+              //props.setCourse(obj.body)
             }
-            })
-        })
+          });
+        });
     }} >update course</Button>
     {/* </div> */}
     </Card>

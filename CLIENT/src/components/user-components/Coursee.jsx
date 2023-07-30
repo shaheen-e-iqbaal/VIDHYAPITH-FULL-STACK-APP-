@@ -11,12 +11,14 @@ export default function Coursee(props) {
         auth: "bearer " + localStorage.getItem("token"),
       },
     };
-    fetch("http://localhost:3000/users/courses/" + { courseId }, obj).then(
-      (res) => {
-        res.json().then((data) => {
-          alert("course purchased succesfully");
-        });
-      }
-    );
+    fetch(
+      "https://vidhyapith-full-stack-app.vercel.app/users/courses/" +
+        { courseId },
+      obj
+    ).then((res) => {
+      res.json().then((data) => {
+        alert("course purchased succesfully");
+      });
+    });
   }, []);
 }

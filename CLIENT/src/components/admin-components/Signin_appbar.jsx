@@ -15,17 +15,17 @@ function Signin_appbar(){
     const [content,setContent] = useState('');
     const [email,setEmail] = useState('');
     useEffect(()=>{
-        fetch('http://localhost:3000/admin/me',{
-            method:"GET",
-            headers:{
-                "Content-type":'application/json',
-                'auth': 'bearer ' + localStorage.getItem('token')
-            }
-        }).then((res)=>{
-            res.json().then((data)=>{
-                setEmail(data);
-            })
-        })
+        fetch("https://vidhyapith-full-stack-app.vercel.app/admin/me", {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            auth: "bearer " + localStorage.getItem("token"),
+          },
+        }).then((res) => {
+          res.json().then((data) => {
+            setEmail(data);
+          });
+        });
     },[])
     return <>
     

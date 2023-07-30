@@ -86,7 +86,7 @@ export default function AdminCourse(props){
               onClick={() => {
                 alert('Are U Sure to Delete');
                   fetch(
-                    "http://localhost:3000/admin/courses/delete/" +
+                    "https://vidhyapith-full-stack-app.vercel.app/admin/courses/delete/" +
                       props.course.courseId,
                     {
                       method: "DELETE",

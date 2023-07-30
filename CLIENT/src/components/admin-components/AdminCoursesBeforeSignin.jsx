@@ -13,12 +13,15 @@ import AdminAppbar from "./AdminAppbar";
 export default function AdminCoursesBeforeSignin() {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/users/coursesbeforesignin", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then((res) => {
+    fetch(
+      "https://vidhyapith-full-stack-app.vercel.app/users/coursesbeforesignin",
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    ).then((res) => {
       res.json().then((data) => {
         setCourses(data);
       });

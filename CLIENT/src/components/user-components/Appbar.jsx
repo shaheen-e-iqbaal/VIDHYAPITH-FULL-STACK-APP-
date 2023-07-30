@@ -50,31 +50,41 @@ function Appbar(){
     }
     else{
         useEffect(()=>{
-        fetch('http://localhost:3000/admin/me',{
-            method:"GET",
-            headers:{
-                "Content-type":'application/json',
-                'auth': 'bearer ' + localStorage.getItem('token')
-            }
-        }).then((res)=>{
-            res.json().then((data)=>{
-                setEmail(data);
-                setFirstcontent(<div style={{
-                    paddingRight:'25px',
-                    marginTop:'10px',
-                }}><Typography style={{
-                    fontWeight:'bold',
-                    color:'white'
-                }}>{data}</Typography></div>);
-                // setSecondcontent(<div style={{
-                //     paddingRight:'9px',
-                    
-                // }}><Button variant='contained' onClick={()=>{
-                //     localStorage.setItem('token','');
-                //     window.location = '/';
-                // }}>Log out</Button></div>)
-            })
-        })
+        fetch("https://vidhyapith-full-stack-app.vercel.app/admin/me", {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            auth: "bearer " + localStorage.getItem("token"),
+          },
+        }).then((res) => {
+          res.json().then((data) => {
+            setEmail(data);
+            setFirstcontent(
+              <div
+                style={{
+                  paddingRight: "25px",
+                  marginTop: "10px",
+                }}
+              >
+                <Typography
+                  style={{
+                    fontWeight: "bold",
+                    color: "white",
+                  }}
+                >
+                  {data}
+                </Typography>
+              </div>
+            );
+            // setSecondcontent(<div style={{
+            //     paddingRight:'9px',
+
+            // }}><Button variant='contained' onClick={()=>{
+            //     localStorage.setItem('token','');
+            //     window.location = '/';
+            // }}>Log out</Button></div>)
+          });
+        });
     },[])
         return (
           <>

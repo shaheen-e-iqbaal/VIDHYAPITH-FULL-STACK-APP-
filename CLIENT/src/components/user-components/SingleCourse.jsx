@@ -16,7 +16,7 @@ export default function SingleCourse() {
   const [isClicked,setIsClicked] = useState(false);
   const [text,setText] = useState('Purchase')
   useEffect(()=>{
-    fetch("http://localhost:3000/users/courses", {
+    fetch("https://vidhyapith-full-stack-app.vercel.app/users/courses", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -118,7 +118,8 @@ export default function SingleCourse() {
                   },
                 };
                 fetch(
-                  "http://localhost:3000/users/courses/" + courseId.courseId,
+                  "https://vidhyapith-full-stack-app.vercel.app/users/courses/" +
+                    courseId.courseId,
                   obj
                 ).then((res) => {
                   res.json().then((data) => {
