@@ -27,16 +27,14 @@ import React  from "react"
 function App() {
   
   const path = window.location.href;
+  const parts = path.split("/");
+  const lastPart = parts[parts.length - 1];
+  const secondlastpart = parts[parts.length - 2];
   const components =
-    path === "http://localhost:5173/admin" ||
-    path === "http://localhost:5173/courses" ||
-    path === "http://localhost:5173/coursee/:courseId" ||
-    path === "http://localhost:5173/admin/signin" ||
-    path === "http://localhost:5173/admin/signup" ||
-    path === "http://localhost:5173/admin/courses" ||
-    path === "http://localhost:5173/admin/setting" ||
-    path === "http://localhost:5173/admin/addcourse" ||
-    path === "http://localhost:5173/admin/admincoursesbeforesignin" ? (
+    lastPart === "admin" ||
+    secondlastpart === "admin" ||
+    lastPart === "courses" ||
+    secondlastpart === "coursee" ? (
       <AdminAppbar />
     ) : (
       <Appbar />
@@ -67,7 +65,7 @@ function App() {
           />
           <Route path="/setting" element={[<Setting />]} />
           <Route path="/home" element={[<FaltuContent />]} />
-          <Route path="/" element={[<FaltuContent />]} />
+          <Route exact path="/" element={[<FaltuContent />]} />
           <Route
             path="/coursesbeforesignin"
             element={[<CoursesBeforeSignin />]}
@@ -78,7 +76,7 @@ function App() {
           {/* ADMIN ROUTES */}
 
           <Route
-            path="/admin"
+            exact path="/admin"
             element={[<AdminFaltuContent />]}
           />
           <Route path="/courses" element={<Courses />} />
