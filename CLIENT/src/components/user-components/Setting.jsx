@@ -13,6 +13,7 @@ import { Button } from "@mui/material";
 import { Navigate, useNavigate } from "react-router-dom";
 import Signin from "./Signin";
 import Appbar from "./Appbar";
+import Alert from "@mui/material/Alert";
 
 export default function Setting() {
   const token = localStorage.getItem("token");
@@ -122,15 +123,15 @@ export default function Setting() {
                     auth: "bearer " + localStorage.getItem("token"),
                   },
                 };
-                fetch("http://localhost:3000/users/update", obj).then((res) => {
+                fetch("https://vidhyapith-full-stack-app.vercel.app/users/update", obj).then((res) => {
                   res.json().then((data) => {
                     if (data.message === "updated succesfully") {
-                      console.log(data);
+                      //console.log(data);
                       localStorage.setItem("token", data.token);
                       //   Navigate("/Signin");
                       window.location = "/";
                     } else {
-                      setMassage(data.message);
+                      setMassage(<Alert severity="error">{data.message}</Alert>);
                     }
                   });
                 });
