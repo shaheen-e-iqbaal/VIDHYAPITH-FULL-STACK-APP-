@@ -23,7 +23,7 @@ const generatejwt = (req) => {
     password: password,
     role: role,
   };
-  const token = jwt.sign(obj, secretKey);
+  const token = jwt.sign(obj, secretKey, { expiresIn: "1h" });
   return token;
 };
 
