@@ -64,7 +64,7 @@ const router = express.Router();
       username: username,
       password: req.body.password,
     };
-    const update = await User.findOneAndUpdate(
+    const update = await Admin.findOneAndUpdate(
       {
         username: username,
         password: password,
@@ -78,7 +78,7 @@ const router = express.Router();
       const token = generatejwt(req);
       res.json({ message: "updated succesfully", token: token });
     } else {
-      res.status(404).json({ message: "failed update operation" });
+      res.status(404).json({ message: "Failed Update Operation" });
     }
   });
 
