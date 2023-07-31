@@ -30,15 +30,7 @@ function App() {
   const parts = path.split("/");
   const lastPart = parts[parts.length - 1];
   const secondlastpart = parts[parts.length - 2];
-  const components =
-    lastPart === "admin" ||
-    secondlastpart === "admin" ||
-    lastPart === "courses" ||
-    secondlastpart === "coursee" ? (
-      <AdminAppbar />
-    ) : (
-      <Appbar />
-    );
+  const components = <Appbar />;
 
   return (
     <>
@@ -75,7 +67,7 @@ function App() {
 
           {/* ADMIN ROUTES */}
 
-          <Route
+{/*           <Route
             exact path="/admin"
             element={[<AdminFaltuContent />]}
           />
@@ -90,7 +82,7 @@ function App() {
             path="/admin/admincoursesbeforesignin"
             element={<AdminCoursesBeforeSignin />}
           />
-
+ */}
           {/* ADMIN ROUTES */}
         </Routes>
       </Router>
